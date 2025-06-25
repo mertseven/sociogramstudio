@@ -38,7 +38,7 @@ Sociogram Studio is a powerful web application designed for educators, researche
     *   Click the **GET ANALYSIS** button. The app will process your data and automatically switch you to the graph view.
 4.  **Explore:**
     *   Navigate between the **NETWORK METRICS** tab to see a detailed table of scores.
-    *   Use the controls on the **SOCIOGRAM (D3)** tab to customize the visualization, highlight cliques, and uncover insights.
+    *   Use the controls on the **NETWORK GRAPH** tab to customize the visualization, highlight cliques, and uncover insights.
 
 ---
 
