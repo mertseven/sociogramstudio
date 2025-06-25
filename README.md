@@ -1,6 +1,6 @@
 # Sociogram Studio
 
-An interactive, client-side sociometric analysis and visualization tool built with D3.js.
+An interactive, client-side sociometric analysis and visualization tool built with D3.js. You can run it via https://mertseven.com/sociogramstudio or locally by using the files in this repo.
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
