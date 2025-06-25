@@ -79,18 +79,6 @@ To run Sociogram Studio on your local machine, you'll need a simple local web se
 
 ---
 
-## Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
----
-
 ## 📄 License
 
 This work is licensed under a **[Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/)**.
