@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sociogram Studio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- REMOVED: save-svg-as-png will be imported as a module in app.js -->
+</head>
+<body>
+  <header>
+    <h1>Sociogram Studio</h1>
+  </header>
+  <nav>
+    <ul id="tabs">
+      <li data-tab="data" class="active">ENTER DATA</li>
+      <li data-tab="metrics">NETWORK METRICS</li>
+      <li data-tab="graph">NETWORK GRAPH</li>
+      <li style="margin-left:auto"><a href="help.html" target="_blank">HELP</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="data" class="tab active">
+      <div class="controls">
+        <button id="add-row-btn">+ Add Row</button>
+        <button id="clear-table-btn">Clear Table</button>
+        <label for="csv-file-input" class="button-like-label">Import CSV</label>
+        <input type="file" id="csv-file-input" accept=".csv" style="display: none;">
+        <button id="analyze-btn" class="primary">GET ANALYSIS</button>
+      </div>
+      <table id="data-table">
+        <thead>
+          <tr>
+            <th>Code</th><th>Name</th>
+            <th title="Most Preferred 1">MP1</th><th title="Most Preferred 2">MP2</th><th title="Most Preferred 3">MP3</th>
+            <th title="Least Preferred 1">LP1</th><th title="Least Preferred 2">LP2</th><th title="Least Preferred 3">LP3</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p class="hint">Enter unique codes for each individual. Nominations (MP/LP) should use these codes. Action column contains delete button.</p>
+    </section>
+
+    <section id="metrics" class="tab">
+      <h2>Network Metrics</h2>
+      <p class="hint">Centrality scores are normalized (0-1). Higher values indicate more central positions. Cliques are based on positive preferences only.</p>
+      <table id="metrics-table">
+        <thead>
+          <tr>
+            <th>Code</th><th>Name</th>
+            <th>Pref. Rcvd.</th><th>Non-Pref. Rcvd.</th>
+            <th>Pref. Given</th><th>Non-Pref. Given</th>
+            <th>Total Degree</th>
+            <th>Positive Recip.</th><th>Social Pref. Score</th><th>Status (Approx.)</th>
+            <th>Betweenness C.</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="graph" class="tab">
+      <div class="graph-top-controls">
+        <div class="control-group">
+            <label for="node-color-mode">Mode:</label>
+            <select id="node-color-mode">
+                <option value="status">Sociometric Status</option>
+                <option value="preferencesReceived">Most Preferred Count</option>
+                <option value="nonPreferencesReceived">Least Preferred Count</option>
+                <option value="degree">Total Degree</option>
+                <option value="betweenness">Betweenness Centrality</option>
+                <option value="default">Default Color</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="node-label-select">Labels:</label>
+            <select id="node-label-select">
+                <option value="name">Name</option>
+                <option value="code">Code</option>
+            </select>
+        </div>
+         <div class="control-group">
+            <label for="node-label-size">Label Size:</label>
+            <input type="range" id="node-label-size" min="6" max="20" value="10" step="1">
+            <span id="node-label-size-value">10</span>px
+        </div>
+        <button id="download-graph-btn">Download as Image</button>
+        <button id="fullscreen-graph-btn">Toggle Fullscreen</button>
+        <button id="clear-highlight-btn" style="display:none;">Clear Highlight</button> 
+      </div>
+
+      <div class="graph-main-area">
+        <div class="graph-legend-container">
+            <h4 id="legend-title">Legend</h4>
+            <div id="legend-content"></div>
+            <hr class="legend-divider">
+            <div id="mode-explanation">
+                <h4>Mode Explanations</h4>
+                <div id="explanation-content"></div>
+            </div>
+            <hr class="legend-divider">
+            <div id="clique-analysis-area">
+                <h4>Clique Analysis (Positive Ties)</h4>
+                <div class="control-group">
+                    <label for="min-clique-size">Min. Size:</label>
+                    <input type="number" id="min-clique-size" value="3" min="2" style="width:50px;">
+                </div>
+                <div class="control-group">
+                    <label for="clique-selector">Select Clique:</label>
+                    <select id="clique-selector" disabled>
+                        <option value="">-- Analyze Data First --</option>
+                    </select>
+                </div>
+                <p id="clique-count-info"></p>
+            </div>
+        </div>
+        <div id="d3-sociogram-container">
+          <svg id="sociogram-svg"></svg>
+        </div>
+      </div>
+
+       <div class="graph-bottom-controls">
+            <div class="control-group">
+                <label for="link-distance">Link Distance:</label>
+                <input type="range" id="link-distance" min="30" max="400" value="160">
+                <span id="link-distance-value">160</span>
+            </div>
+            <div class="control-group">
+                <label for="charge-strength">Charge Strength:</label>
+                <input type="range" id="charge-strength" min="-2000" max="-50" value="-500" step="10">
+                <span id="charge-strength-value">-500</span>
+            </div>
+            <div class="control-group">
+                <label for="collide-radius-factor">Node Padding:</label>
+                <input type="range" id="collide-radius-factor" min="1.0" max="5.0" value="2.2" step="0.1">
+                <span id="collide-radius-factor-value">2.2</span>
+            </div>
+            <hr class="controls-divider">
+            <div class="control-group">
+                <input type="checkbox" id="show-positive-links" checked>
+                <label for="show-positive-links">Show Positive Links</label>
+            </div>
+            <div class="control-group">
+                <input type="checkbox" id="show-negative-links" checked>
+                <label for="show-negative-links">Show Negative Links</label>
+            </div>
+            <div class="control-group">
+                <label for="min-prefs-filter">Min Prefs. Rcvd:</label>
+                <input type="number" id="min-prefs-filter" value="0" min="0" style="width: 60px;">
+            </div>
+       </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Sociogram Studio v1. Designed by Mert Seven. Licensed under CC BY 4.0.</p>
+    <p><a href="https://github.com/mertseven/sociogramstudio" target="_blank">View Source on GitHub</a></p>
+    <p><a href="https://mertseven.com" target="_blank">Visit mertseven.com</a></p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <!-- graph_algorithms.js is imported by app.js -->
+</body>
+</html>

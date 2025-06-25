@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help & Documentation - Sociogram Studio</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/help.css">
+</head>
+<body>
+  <header>
+    <h1>Sociogram Studio</h1>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="index.html">← BACK TO APP</a></li>
+      <li style="margin-left:auto"><a href="https://github.com/mertseven/sociogramstudio" target="_blank">VIEW ON GITHUB</a></li>
+    </ul>
+  </nav>
+
+  <main class="help-container">
+    <aside id="help-sidebar">
+        <h4>Navigation</h4>
+        <nav>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li>
+                    <a href="#toolkit">The Toolkit</a>
+                    <ul>
+                        <li><a href="#workflow">3-Step Workflow</a></li>
+                        <li><a href="#data-entry">Data Entry Example</a></li>
+                        <li><a href="#features">Key Features</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#science">The Science</a>
+                     <ul>
+                        <li><a href="#what-is-sociogram">What is a Sociogram?</a></li>
+                        <li><a href="#history-mission">History & Mission</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#use-cases">Use Cases</a>
+                     <ul>
+                        <li><a href="#questions">Questions to Answer</a></li>
+                        <li><a href="#education">For Educators</a></li>
+                        <li><a href="#business">For Business</a></li>
+                        <li><a href="#research">For Researchers</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <article id="help-content">
+        <section id="introduction">
+            <h1>Welcome to Sociogram Studio!</h1>
+            <p class="lead">This guide will help you unlock the full potential of mapping and understanding human connections. Sociogram Studio is a dynamic analysis platform designed to be interactive, insightful, and entirely private.</p>
+        </section>
+
+        <section id="toolkit">
+            <h2>Your Interactive Sociogram Toolkit</h2>
+            
+            <h3 id="workflow">A Simple 3-Step Workflow:</h3>
+            <ol>
+                <li><strong>Enter Data:</strong> In the <code>ENTER DATA</code> tab, you can manually add individuals (<code>+ Add Row</code>) or import a <code>.csv</code> file.</li>
+                <li><strong>Get Analysis:</strong> Click the <code>GET ANALYSIS</code> button. This is where the magic happens. The app instantly processes your data, calculates key metrics, and prepares the visualization.</li>
+                <li><strong>Explore & Discover:</strong>
+                    <ul>
+                        <li>Switch to the <code>NETWORK METRICS</code> tab for a detailed table of every individual's social standing.</li>
+                        <li>Go to the <code>NETWORK GRAPH</code> tab to see your network come to life.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3 id="data-entry">How to Enter Data: A Quick Example</h3>
+            <p>The key is to use a unique <strong>Code</strong> for each person. This code is then used in the "Most Preferred" (MP) and "Least Preferred" (LP) columns to show choices. Imagine a group with three people: Alice (code: <code>A</code>), Bob (code: <code>B</code>), and Charlie (code: <code>C</code>).</p>
+            
+            <table class="data-example-table">
+                <thead>
+                  <tr>
+                    <th>Code</th><th>Name</th>
+                    <th title="Most Preferred 1">MP1</th><th title="Most Preferred 2">MP2</th><th title="Most Preferred 3">MP3</th>
+                    <th title="Least Preferred 1">LP1</th><th title="Least Preferred 2">LP2</th><th title="Least Preferred 3">LP3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr><td>A</td><td>Alice</td><td>B</td><td></td><td></td><td>C</td><td></td><td></td></tr>
+                    <tr><td>B</td><td>Bob</td><td>A</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>C</td><td>Charlie</td><td>B</td><td></td><td></td><td>A</td><td></td><td></td></tr>
+                </tbody>
+            </table>
+            <p>From this, we can see:</p>
+            <ul>
+                <li>Alice chose Bob as most preferred and Charlie as least preferred.</li>
+                <li>Bob and Alice chose each other, forming a reciprocal (mutual) positive bond.</li>
+                <li>You don't have to fill all choice columns. The app will handle the rest!</li>
+            </ul>
+            <div class="callout">
+                <p><strong>Use Codes with Caution:</strong> Ensure every individual has a unique code. The analysis depends on these codes to correctly map relationships. Avoid spaces or special characters if possible.</p>
+            </div>
+
+            <h3 id="features">Why Sociogram Studio is Different</h3>
+            <dl>
+                <dt>Go Beyond Basic Counts</dt>
+                <dd>We automatically calculate standardized <strong>Sociometric Status</strong> (Popular, Rejected, Controversial, Neglected, Average) to give you a true sense of an individual's social standing relative to the group.</dd>
+                
+                <dt>Identify Critical Connectors</dt>
+                <dd>The app calculates <strong>Betweenness Centrality</strong>, a powerful metric that highlights the "bridges" in your network—individuals who connect otherwise disparate groups.</dd>
+                
+                <dt>Discover Hidden Groups Instantly</dt>
+                <dd>Our built-in <strong>Clique Analysis</strong> automatically finds all tightly-knit sub-groups based on mutual positive choices. You can easily select and highlight these cliques on the graph.</dd>
+                
+                <dt>Dynamic & Interactive Visualization</dt>
+                <dd>Use the controls to color-code by metric, fine-tune the layout with force sliders, and filter the graph with precision.</dd>
+
+                <dt>Your Data, Your Control</dt>
+                <dd>Everything is client-side. Your data never leaves your computer. When you're done, download a high-resolution image of your sociogram for reports and presentations.</dd>
+            </dl>
+        </section>
+
+        <section id="science">
+            <h2>The Science of Sociometry</h2>
+            <h3 id="what-is-sociogram">What is a Sociogram?</h3>
+            <p>A sociogram is a visual map of the interpersonal relationships and lines of communication within a group. At its heart, it answers the question: "Who is connected to whom?" By analyzing the patterns of these connections, we can uncover the hidden social dynamics that govern a group's behavior, success, and challenges.</p>
+
+            <h3 id="history-mission">A Brief History & Our Mission</h3>
+            <p>The concept was pioneered by psychiatrist Jacob L. Moreno in the 1930s. He developed sociometry as a way to formally study and improve group dynamics, believing that understanding relationship structures was key to fostering well-being and productivity.</p>
+            <p><strong>Sociogram Studio</strong> is a modern, open-source project that builds on Moreno's legacy, aiming to make powerful sociometric analysis accessible to everyone.</p>
+        </section>
+
+        <section id="use-cases">
+            <h2>Real-World Applications & Use Cases</h2>
+            <p>A sociogram is a versatile tool that can diagnose problems and reveal opportunities in any field where human interaction matters.</p>
+
+            <h3 id="questions">What Questions Can a Sociogram Answer?</h3>
+            <ul>
+                <li><strong>Influence & Leadership:</strong> Who are the real leaders and most influential members?</li>
+                <li><strong>Social Isolation:</strong> Is anyone being socially excluded, ignored, or isolated?</li>
+                <li><strong>Group Cohesion:</strong> Is the group well-integrated, or is it breaking into factions and cliques?</li>
+                <li><strong>Communication Flow:</strong> Who acts as a bridge for information between different sub-groups?</li>
+                <li><strong>Potential Conflict:</strong> Who is actively disliked, and where are the points of social friction?</li>
+                <li><strong>Strategic Planning:</strong> If a key person left, would the network fall apart?</li>
+            </ul>
+
+            <h3 id="education">For Educators & Child Development</h3>
+            <p>Mapping classroom relationships can move you from guesswork to data-driven intervention. Identify at-risk students, spot potential bullying, and form balanced project groups to ensure no one is left out.</p>
+
+            <h3 id="business">For Business & Organizational Management</h3>
+            <p>The formal org chart rarely tells the whole story. Sociograms reveal the informal network where work actually gets done. Use it to improve team cohesion, identify informal leaders who can champion change, and mitigate risks from information silos or factions.</p>
+
+            <h3 id="research">For Researchers & Social Scientists</h3>
+            <p>Sociogram Studio provides the robust, quantifiable data needed for serious academic work. Analyze group structure with metrics like centrality and density, and test hypotheses about the impact of interventions on a group's social fabric.</p>
+        </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>Sociogram Studio v1. Designed by Mert Seven. Licensed under CC BY 4.0.</p>
+    <p><a href="https://github.com/mertseven/sociogramstudio" target="_blank">View Source on GitHub</a></p>
+    <p><a href="https://mertseven.com" target="_blank">Visit mertseven.com</a></p>
+  </footer>
+
+  <script>
+    // This script makes the sidebar navigation update as you scroll
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('#help-sidebar nav ul li a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href').substring(1) === entry.target.id);
+                        // Also activate parent if it's a sub-item
+                        if(link.classList.contains('active') && link.parentElement.parentElement.previousElementSibling) {
+                           link.parentElement.parentElement.previousElementSibling.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Initial active state for the first link
+        if(navLinks.length > 0) navLinks[0].classList.add('active');
+    });
+  </script>
+
+</body>
+</html>

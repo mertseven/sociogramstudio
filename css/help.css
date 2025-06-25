@@ -1,0 +1,153 @@
+/* --- Help Page Specific Styles --- */
+
+/* --- FIX: Override global 'display: flex' to make sidebar vertical --- */
+#help-sidebar nav ul {
+    display: block;
+}
+
+/* Main layout container for sidebar and content */
+.help-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-y: auto; /* Make the main container scrollable, not the body */
+    height: 100%;
+}
+
+/* Sidebar for navigation */
+#help-sidebar {
+    flex: 0 0 240px; /* Do not grow, do not shrink, base width of 240px */
+    position: sticky;
+    top: 1.5rem; /* Stick below the padding of the container */
+    align-self: flex-start; /* Align to the top of the flex container */
+    height: calc(100vh - 180px); /* Adjust height to prevent overlapping footer */
+    overflow-y: auto;
+}
+
+#help-sidebar h4 {
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+#help-sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#help-sidebar nav ul ul {
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+}
+
+#help-sidebar nav li a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.95rem;
+}
+
+#help-sidebar nav li a:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+#help-sidebar nav li a.active {
+    background-color: var(--primary-action);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Main content article */
+#help-content {
+    flex-grow: 1;
+    min-width: 0; /* Important for flexbox to allow content to shrink */
+}
+
+#help-content section {
+    margin-bottom: 3rem;
+}
+
+#help-content h1, h2, h3, h4, h5 {
+    color: var(--text-primary);
+}
+#help-content h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+#help-content .lead { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; }
+#help-content h2 { font-size: 1.8rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+#help-content h3 { font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--accent-primary); }
+
+#help-content p, #help-content li, #help-content dd {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+#help-content a {
+    color: var(--accent-secondary);
+}
+
+#help-content a:hover {
+    text-decoration: underline;
+}
+
+#help-content code {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+#help-content ol, #help-content ul {
+    padding-left: 25px;
+}
+
+#help-content dt {
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-top: 1rem;
+}
+
+/* A styled box for important notes */
+.callout {
+    background-color: var(--bg-secondary);
+    border-left: 4px solid var(--accent-primary);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+}
+.callout p {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* The example data table */
+.data-example-table {
+    margin: 1.5rem 0;
+}
+.data-example-table td {
+    background-color: #272727; /* Match editable cell style for consistency */
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 900px) {
+    .help-container {
+        flex-direction: column;
+    }
+    #help-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+        flex-basis: auto;
+    }
+}
